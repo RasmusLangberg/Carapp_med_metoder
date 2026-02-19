@@ -13,6 +13,9 @@ namespace MenuTutorial
         static char brændstof;
         static int kmt;
         static double kmL;
+        static int distance;
+        static int nyDistance;
+        static string udskrivBilData;
 
         static void Main(string[] args)
         {
@@ -97,12 +100,28 @@ namespace MenuTutorial
 
             Console.WriteLine("Indtast årgang");
             year = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Indtast geartype");
+            
+            Console.WriteLine("Indtast geartype, manuel (m), eller automatisk (a)");
             gearType = Console.ReadLine()[0];
 
             Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
             brændstof = Console.ReadLine()[0];
+            bool dOrb = false;
+
+            while (!dOrb)
+            {
+
+                Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
+                brændstof = Console.ReadLine().ToLower()[0];
+
+                if (brændstof == 'd')
+                    dOrb = true;
+                else if (brændstof == 'b')
+                    dOrb = true;
+                else
+                    Console.WriteLine("ugyldigt valg. du kan kun skrive d eller b");
+
+            }
 
             Console.WriteLine("Hvad er bilens nuværende km-tilstand");
             kmt = Convert.ToInt32(Console.ReadLine());
@@ -110,7 +129,7 @@ namespace MenuTutorial
             Console.WriteLine("Hvor langt kan bilen køre på en liter brændstof");
             kmL = Convert.ToDouble(Console.ReadLine());
 
-            string udskrivBilData = String.Format("Din bil er en {0} i modellen {1} fra årgang {2} der bruger geartype {3}. Din bil bruger {4} og har kørt {5} km. Din bil kan køre {6}km pr l.", brand, model, year, gearType, brændstof, kmt, kmL);
+            udskrivBilData = String.Format("Din bil er en {0} i modellen {1} fra årgang {2} der bruger geartype {3}. Din bil bruger {4} og har kørt {5} km. Din bil kan køre {6}km pr l.", brand, model, year, gearType, brændstof, kmt, kmL);
 
             Console.WriteLine(udskrivBilData);
 
@@ -148,21 +167,54 @@ namespace MenuTutorial
             if (isEngineOn == true)
             {
                 Console.WriteLine("hvor langt skal du køre?");
-                int distance = Convert.ToInt32(Console.ReadLine());
+                distance = Convert.ToInt32(Console.ReadLine());
 
-                int nyDistance = distance + kmt;
+                nyDistance = distance + kmt;
 
                 Console.WriteLine($"Du har nu kørt {nyDistance} km med bil");
                 Console.ReadLine();
 
             }
 
-
+            Console.WriteLine();
+            Console.WriteLine();
 
 
         }
         static void CalculateTripPrice()
         {
+            if (kmL == 0)
+            {
+                Console.WriteLine("du har ikke intastet dine biloplysninger (option 2)");
+                return;
+
+            }
+            if (distance == 0)
+            {
+                Console.WriteLine("du har ikke intastet dine distance i option 3");
+                return;
+
+            }
+
+            double fuelPrice = 0;
+            if (brændstof == 'd')
+                fuelPrice = 12.29;
+            else if (brændstof == 'b')
+                fuelPrice = 13.49;
+
+
+            Console.WriteLine($"Du har forhen skrevet at du vil tage en tur der er {distance} km lang og at du bruger {brændstof}");
+
+
+            double fuelneeded = distance / kmL;
+            double pris = fuelneeded * fuelPrice;
+
+
+            Console.WriteLine($"Du bruger derfor {fuelneeded} brandstof til at komme derhend og prisen vil vaere {pris} kr");
+            Console.WriteLine($"Bilmærke: {brand}");
+
+            Console.ReadLine();
+
 
 
         }
