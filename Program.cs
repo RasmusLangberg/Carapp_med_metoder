@@ -51,11 +51,6 @@
                     Environment.Exit(0);
                 }
 
-
-
-
-
-
                 static void Bilapp()
                 {
 
@@ -259,5 +254,6 @@
 
                 Console.ReadLine();
             }
+        }
     }
 }
