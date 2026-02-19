@@ -105,9 +105,6 @@ namespace MenuTutorial
             
             Console.WriteLine("Indtast geartype, manuel (m), eller automatisk (a)");
             gearType = Console.ReadLine()[0];
-
-            Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
-            brændstof = Console.ReadLine()[0];
             
             bool dOrb = false;
 
