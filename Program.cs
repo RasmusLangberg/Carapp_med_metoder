@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-
+           
             bool programmetKører = true;
 
             while (programmetKører)
