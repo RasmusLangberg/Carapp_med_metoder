@@ -13,8 +13,12 @@
                 Console.WriteLine("============== HOVEDMENU ==============");
                 Console.WriteLine("=======================================");
                 Console.WriteLine(" 1) Introduktion");
-                Console.WriteLine(" 2) Indtast bil oplysninger på kunden");
-                Console.WriteLine(" 3) Afslut programmet");
+                Console.WriteLine(" 2) Indtast Bil information");
+                Console.WriteLine(" 3) Køretur simulator");
+                Console.WriteLine(" 4) Køreturs berenger");
+                Console.WriteLine(" 5) Er kilometertallet på bilen en palidrome? f.eks 112211");
+                Console.WriteLine(" 6) Print bil detailer");
+                Console.WriteLine(" 7) Afslut program");
 
                 string BrugerInput = Console.ReadLine();
 
@@ -26,10 +30,20 @@
 
                     case "2":
 
-                        Bilapp();
+                        BilInfo();
                         break;
 
                     case "3":
+                        Køretur();
+                        break;
+
+                    case "4":
+                        KøreturBeregn();
+                        break;
+                    case "5":
+                        AfslutProgram();
+                        break;
+                    case "6":
                         AfslutProgram();
                         break;
                 }
@@ -37,13 +51,25 @@
 
                 static void Indtroduktion()
                 {
-
-                    Console.WriteLine("Velkommen til denne bilapp. \nmed bilappen kan du indtaste data fra kundens bil \nog hvad problemet var så du kan huske det når du har tid på bærkstedet");
-                    Console.WriteLine("tryk enter for at at vende tilbage til hovedmenuen");
-
-
+                    Console.WriteLine("==========================================");
+                    Console.WriteLine("============== INTRODUKTION ==============");
+                    Console.WriteLine("==========================================");
+                    Console.WriteLine("Velkommen til denne bilapp. \nmed bilappen kan du indtaste data fra kundens bil");
+                    Console.WriteLine("");
+                    Console.WriteLine("tryk ENTER for at at vende tilbage til hovedmenuen");
                 }
-
+                static void Køretur()
+                {
+                    
+                    
+                    
+                }
+                static void KøreturBeregn()
+                {
+                    Console.WriteLine("Tryk enter for at lukke programmet");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+                }
                 static void AfslutProgram()
                 {
                     Console.WriteLine("Tryk enter for at lukke programmet");
@@ -51,10 +77,12 @@
                     Environment.Exit(0);
                 }
 
-                static void Bilapp()
+                static void BilInfo()
                 {
-
-
+                    
+                    bool ManglerInputÅr = true;
+                    bool ManglerInputKML = true;
+                    int Year = 0;
 
                     Console.WriteLine(" ");
                     Console.Write("  Indtast dit bilmærke:");
@@ -63,25 +91,19 @@
                     Console.Write("  Indtast din bilmodel:");
                     string model = Console.ReadLine();
 
-
-                    int year = 0;
-                    bool ManglerInputÅr = true;
-
-                    Console.Write("  Indtast bilens årgang (YYYY):");
-
                     while (ManglerInputÅr == true)
                     {
                         try
                         {
                             Console.Write("  Indtast bilens årgang (YYYY):");
-                            year = Convert.ToInt32(Console.ReadLine());
+                            int year = Convert.ToInt32(Console.ReadLine());
                             ManglerInputÅr = false;
                         }
-                        catch { }
-                        Console.WriteLine("Ugyldigt input! Indtast venligst et tal (f.eks. 1997):");
+                        catch 
+                        {
+                            Console.WriteLine("Ugyldigt input! Indtast venligst et tal (YYYY)");
+                        }
                     }
-
-
 
                     Console.Write("  Indtast bilens geartype (Manuel/Automatisk):");
                     string gearType = Console.ReadLine();
@@ -90,6 +112,12 @@
                     Console.Write("  Indtast brændstof type (Benzin/Diesel):");
                     string brændstof = (Console.ReadLine().ToLower());
 
+                    
+                    
+                        Console.Write("  Indtast brændstofforbrug i km/l (XX,X):");
+                        double kml = (Convert.ToDouble(Console.ReadLine()));
+
+                    
                     Console.Write("  Indtast brændstofforbrug i km/l (XX,X):");
                     double kml = (Convert.ToDouble(Console.ReadLine()));
 
@@ -108,7 +136,7 @@
                     Console.WriteLine("============== INDTASTET DATA ==============");
                     Console.WriteLine($"  Bilmærke: {brand.ToUpper()}");
                     Console.WriteLine($"  Bilmodel: {model.ToUpper()}");
-                    Console.WriteLine($"  Årgang: {year}");
+                    Console.WriteLine($"  Årgang: {Year}");
                     Console.WriteLine($"  Geartype: {gearType.ToUpper()}");
                     Console.WriteLine($"  Brændstof: {brændstof.ToUpper()}");
                     Console.WriteLine($"  Km/l: {kml}");
@@ -223,7 +251,7 @@
 
                         string BrandTabel2 = brand.PadLeft(18).PadRight(18);
                         string ModelTabel2 = model.PadLeft(18).PadRight(18);
-                        string årTabel2 = year.ToString("F0").PadLeft(18).PadRight(18);
+                        string årTabel2 = Year.ToString("F0").PadLeft(18).PadRight(18);
                         string GearTabel2 = gearType.ToString().PadLeft(18).PadRight(18);
                         string BrændstofTabel2 = brændstof.ToString().PadLeft(18).PadRight(18);
                         string kmlTabel2 = kml.ToString("F1").PadLeft(18).PadRight(18);
