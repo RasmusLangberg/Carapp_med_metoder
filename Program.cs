@@ -1,11 +1,22 @@
 ﻿using System;
+using System.Collections.Concurrent;
 
 namespace MenuTutorial
 {
     class Program
     {
+        //Evt alle variabler der skal bruges
+        static string brand;
+        static string model;
+        static int year;
+        static char gearType;
+        static char brændstof;
+        static int kmt;
+        static double kmL;
+
         static void Main(string[] args)
         {
+
             // Call the new intro method
             ShowWelcome();
 
@@ -43,7 +54,7 @@ namespace MenuTutorial
                         IsPalidrome();
                         break;
                     case "6":
-                        PrintAllTeamCars();
+                        PrintCarDetails();
                         break;
                     case "7":
                         PrintAllTeamCars();
@@ -79,34 +90,46 @@ namespace MenuTutorial
         static void ReadCarDetails()
         {
             Console.WriteLine("Indtast bilmærke");
-            string brand = Console.ReadLine();
+            brand = Console.ReadLine();
 
             Console.WriteLine("Indtast bilmodel");
-            string model = Console.ReadLine();
+            model = Console.ReadLine();
 
             Console.WriteLine("Indtast årgang");
-            int year = Convert.ToInt32(Console.ReadLine());
+            year = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Indtast geartype");
-            char gearType = Console.ReadLine()[0];
+            gearType = Console.ReadLine()[0];
 
             Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
-            char brændstof = Console.ReadLine()[0];
+            brændstof = Console.ReadLine()[0];
 
             Console.WriteLine("Hvad er bilens nuværende km-tilstand");
-            int kmt = Convert.ToInt32(Console.ReadLine());
+            kmt = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Hvor langt kan bilen køre på en liter brændstof");
-            double kmL = Convert.ToDouble(Console.ReadLine());
+            kmL = Convert.ToDouble(Console.ReadLine());
 
             string udskrivBilData = String.Format("Din bil er en {0} i modellen {1} fra årgang {2} der bruger geartype {3}. Din bil bruger {4} og har kørt {5} km. Din bil kan køre {6}km pr l.", brand, model, year, gearType, brændstof, kmt, kmL);
 
-            return;
+            Console.WriteLine(udskrivBilData);
+
+            Console.ReadLine();
+
 
         }
         static void Drive()
         {
+
+            if (kmt == 0) 
+            {
+                Console.WriteLine("du har ikke intastet dine biloplysninger (option 2)");
+                return;
+
+            }
+
             bool isEngineOn = false;
+
             while (isEngineOn == false) 
             {
                 Console.WriteLine("Er din bil tændt?");
@@ -116,21 +139,25 @@ namespace MenuTutorial
                 {
                     isEngineOn = true;
 
+
+
                 }
                
+            }
+
+            if (isEngineOn == true)
+            {
+                Console.WriteLine("hvor langt skal du køre?");
+                int distance = Convert.ToInt32(Console.ReadLine());
+
+                int nyDistance = distance + kmt;
+
+                Console.WriteLine($"Du har nu kørt {nyDistance} km med bil");
+                Console.ReadLine();
+
+            }
 
 
-            } 
-            
-
-           
-
-
-                Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
-            char brændstof = Console.ReadLine()[0];
-
-
-            Console.WriteLine("er din bil tændt?");
 
 
         }
