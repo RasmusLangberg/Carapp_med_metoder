@@ -75,11 +75,11 @@
                         break;
                 }
             }
-        } // ← MAIN SLUTTER HER
+        } //  MAIN SLUTTER HER
 
 
 
-        // -------- METODER --------
+        // ---- METODER ----
 
         static void ReadCarDetails()
         {
