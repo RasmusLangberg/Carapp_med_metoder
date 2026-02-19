@@ -21,6 +21,8 @@ namespace hest
             string Geartype = "geartype";
             string Brændstof = "brændstof";
             bool BilInfoIndtastet = false;
+            int afstand = 0;
+            string BrændstofBogstav = "";
 
             Indtroduktion();
             Console.ReadKey();
@@ -44,10 +46,12 @@ namespace hest
                 switch (BrugerInput)
                 {
                     case "1":
+
                         bilinfo(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof, ref BilInfoIndtastet);
                         break;
 
                     case "2":
+
                         if (BilInfoIndtastet == false)
                         {
                             Console.WriteLine("du skal Indtaste bil information før du kan bruge køre simulatoren");
@@ -67,7 +71,7 @@ namespace hest
                         break;
 
                     case "4":
-                        KøreturBeregn();
+                        KøreturBeregn(ref Brændstof, ref afstand);
                         break;
                     case "5":
                         AfslutProgram();
@@ -124,18 +128,58 @@ namespace hest
                     }
                 }
             }
-        
 
-
-
-
-
-            static void KøreturBeregn()
+            static void KøreturBeregn(ref string Brændstof, ref int afstand, ref string BrændstofBogstav)
             {
-                Console.WriteLine("Tryk enter for at lukke programmet");
-                Console.ReadLine();
-                Environment.Exit(0);
+                if (afstand >= 0 && BrændstofBogstav == "d" || BrændstofBogstav == "b")
+                {
+
+                    if (BrændstofBogstav == "b")
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("============== RESULTAT ==============");
+                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter benzin. Det kommer til at koste: {1:F2}\n   Den oprindlige kilometertal var {2}, og det nye kilometertal er nu {3}"
+                            , antalLiterBrændstof, antalLiterBrændstof * b, Kilometerstand, NyKilometerTal);
+                        Console.WriteLine(formattest1);
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+                        Console.WriteLine("============== RESULTAT ==============");
+                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter diesel. Det kommer til at koste: {1:F2}\n   Den oprindlige kilometertal var {2}, og det nye kilometertal er nu {3}"
+                            , antalLiterBrændstof, antalLiterBrændstof * d, Kilometerstand, NyKilometerTal);
+                        Console.WriteLine(formattest1);
+                        Console.WriteLine("");
+                        Console.WriteLine("");
+
+                    }
+
+
+                }
+
+                else
+                {
+                    Console.WriteLine("Du mangler og indtaste bil information gå tilbage i menuen ");
+                   Console.ReadKey();
+                    
+                }
+
+
+
+
             }
+
+
+
+
+
+
+
             static void AfslutProgram()
             {
                 Console.WriteLine("Tryk enter for at lukke programmet");
@@ -146,7 +190,7 @@ namespace hest
 
             // ref kalder på de variable defineret unde i main -- ref går begge veje så variabler opdatere også ude i main 
 
-            static void bilinfo(ref string Brand, ref string Model, ref int Year, ref int Kilometerstand, ref double Kml, ref string Geartype, ref string Brændstof, ref bool BilInfoIndtastet)
+            static void bilinfo(ref string Brand, ref string Model, ref int Year, ref int Kilometerstand, ref double Kml, ref string Geartype, ref string Brændstof, ref bool BilInfoIndtastet, ref string BrændstofBogstav)
             {
 
                 Console.WriteLine("==========================================");
@@ -179,6 +223,7 @@ namespace hest
 
                 Console.Write("  Indtast brændstof type (Benzin/Diesel):");
                 Brændstof = (Console.ReadLine().ToLower());
+                BrændstofBogstav = Brændstof[0].ToString();
 
                 BilInfoIndtastet = true;
             }
