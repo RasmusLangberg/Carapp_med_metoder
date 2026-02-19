@@ -111,7 +111,7 @@ namespace MenuTutorial
             
             bool dOrb = false;
 
-            while (!dOrb)
+            while (dOrb == false)
             {
                 Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
                 brændstof = Console.ReadLine().ToLower()[0];
