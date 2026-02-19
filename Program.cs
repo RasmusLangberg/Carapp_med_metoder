@@ -21,7 +21,7 @@ namespace hest
             string Geartype = "geartype";
             string Brændstof = "brændstof";
             bool BilInfoIndtastet = false;
-            int afstand = 0;
+            double afstand = 0;
             string BrændstofBogstav = "";
 
             Indtroduktion();
@@ -35,8 +35,8 @@ namespace hest
                 Console.WriteLine(" 1) Indtast Bil information ");
                 Console.WriteLine(" 2) Kører simulator ");
                 Console.WriteLine(" 3) Brændstof berenger");
-                Console.WriteLine(" 4) ");
-                Console.WriteLine(" 5) Er kilometertallet på bilen en palidrome? f.eks 112211");
+                Console.WriteLine(" 4) Er kilometertallet på bilen en palidrome? f.eks 112211");
+                Console.WriteLine(" 5) ");
                 Console.WriteLine(" 6) Print bil detailer");
                 Console.WriteLine(" 7) Afslut program");
 
@@ -65,13 +65,11 @@ namespace hest
                         break;
 
                     case "3":
-                     
-                     
-                       
+                        KøreturBeregn(ref Brændstof, ref afstand, ref BrændstofBogstav, ref Kml);
                         break;
 
                     case "4":
-                        KøreturBeregn(ref Brændstof, ref afstand, ref BrændstofBogstav, ref Kml);
+                       
                         break;
                     case "5":
                         AfslutProgram();
@@ -129,7 +127,7 @@ namespace hest
                 }
             }
 
-            static void KøreturBeregn(ref string Brændstof, ref int afstand, ref string BrændstofBogstav, ref double Kml)
+            static void KøreturBeregn(ref string Brændstof, ref double afstand, ref string BrændstofBogstav, ref double Kml)
             {
                 double antalLiterBrændstof = afstand / Kml;
 
@@ -138,7 +136,7 @@ namespace hest
                 double b = 13.49; // diesel pris
 
 
-                if (afstand >= 0 && BrændstofBogstav == "d" || BrændstofBogstav == "b")
+                if (afstand >= 0 && (BrændstofBogstav == "d" || BrændstofBogstav == "b") )
                 {
 
                     if (BrændstofBogstav == "b")
@@ -146,11 +144,7 @@ namespace hest
                         Console.WriteLine("");
                         Console.WriteLine("");
                         Console.WriteLine("============== RESULTAT ==============");
-                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter benzin. Det kommer til at koste: {1:F2}"
-                            , antalLiterBrændstof, antalLiterBrændstof * b);
-                        Console.WriteLine(formattest1);
-                        Console.WriteLine("");
-                        Console.WriteLine("");
+                        Console.WriteLine($" Din bil kommer til at bruge {antalLiterBrændstof} Diesel. Prisen ville være {antalLiterBrændstof * b }");
                     }
 
                     else
@@ -158,11 +152,7 @@ namespace hest
                         Console.WriteLine("");
                         Console.WriteLine("");
                         Console.WriteLine("============== RESULTAT ==============");
-                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter diesel. Det kommer til at koste: {1:F2}"   
-                            , antalLiterBrændstof, antalLiterBrændstof * d);
-                        Console.WriteLine(formattest1);
-                        Console.WriteLine("");
-                        Console.WriteLine("");
+                        Console.WriteLine($" Din bil kommer til at bruge {antalLiterBrændstof} Diesel. Prisen ville være {antalLiterBrændstof * d }");
 
                     }
 
