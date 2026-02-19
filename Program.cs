@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //RAFAEL BRANCH
+            //RAFAEL VERSION
 
             bool programmetKører = true;
 
@@ -255,7 +255,6 @@
 
                 Console.ReadLine();
             }
-
         }
     }
 }
