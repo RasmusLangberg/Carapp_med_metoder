@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //RAFAEL VERSION
+            //RAFAEL VERSION sdsd
 
             bool programmetKører = true;
 
