@@ -16,6 +16,8 @@ namespace MenuTutorial
         static int distance;
         static int nyDistance;
         static string udskrivBilData;
+        static double pris;
+        static double fuelneeded;
 
         static void Main(string[] args)
         {
@@ -210,8 +212,8 @@ namespace MenuTutorial
             Console.WriteLine($"Du har forhen skrevet at du vil tage en tur der er {distance} km lang og at du bruger {brændstof}");
             Console.ReadLine();
 
-            double fuelneeded = distance / kmL;
-            double pris = fuelneeded * fuelPrice;
+            fuelneeded = distance / kmL;
+            pris = fuelneeded * fuelPrice;
 
 
             Console.WriteLine($"Du bruger derfor {fuelneeded} brandstof til at komme derhend og prisen vil vaere {pris} kr");
@@ -228,13 +230,33 @@ namespace MenuTutorial
         static void IsPalidrome()
         {
 
+            Console.WriteLine("nej tak <3");
 
 
         }
         static void PrintCarDetails()
         {
+            if (kmL == 0)
+            {
+                Console.WriteLine("du har ikke intastet dine biloplysninger (option 2)");
+                return;
 
+            }
+            if (fuelneeded == 0)
+            {
+                Console.WriteLine("du har ikke intastet dine distanceoplysninger (option 4)");
+                return;
 
+            }
+
+            Console.WriteLine(udskrivBilData);
+            Console.WriteLine($"Derudover er der beregnet at du skal bruge {fuelneeded} brandstof og at det koster dig {pris} kr ");
+
+            Console.WriteLine();
+
+            Console.WriteLine("_______________________________");
+
+            Console.ReadLine();
 
         }
         static void PrintAllTeamCars()
