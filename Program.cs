@@ -244,6 +244,7 @@
 
 
 
+                        Console.WriteLine("Tryk enter for at vende tilbage til hovedmenuen");
 
                     }
 
