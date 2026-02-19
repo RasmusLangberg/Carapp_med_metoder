@@ -108,18 +108,24 @@ namespace MenuTutorial
 
             Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
             brændstof = Console.ReadLine()[0];
+            
             bool dOrb = false;
 
             while (!dOrb)
             {
-
                 Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
                 brændstof = Console.ReadLine().ToLower()[0];
 
                 if (brændstof == 'd')
+                {
                     dOrb = true;
+
+                }
                 else if (brændstof == 'b')
+                {
                     dOrb = true;
+
+                }
                 else
                     Console.WriteLine("ugyldigt valg. du kan kun skrive d eller b");
 
