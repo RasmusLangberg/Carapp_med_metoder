@@ -61,7 +61,7 @@ namespace hest
                         }
                         else
                         {
-                            Køretur(ref Kilometerstand);
+                            Køretur(ref Kilometerstand, ref afstand);
                         } 
                                
                         break;
@@ -74,7 +74,7 @@ namespace hest
                        
                         break;
                     case "5":
-                        Print(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof, ref BilInfoIndtastet, ref BrændstofBogstav);
+                        Print(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof, ref BilInfoIndtastet, ref BrændstofBogstav, ref afstand);
                         break;
                     case "6":
 
@@ -89,9 +89,10 @@ namespace hest
                 Console.WriteLine("==========================================");
                 Console.WriteLine("============== INTRODUKTION ==============");
                 Console.WriteLine("==========================================");
-                Console.WriteLine("Velkommen til denne bilapp. \nmed bilappen kan du indtaste data fra kundens bil");
                 Console.WriteLine("");
-                Console.WriteLine("tryk ENTER for at at vende tilbage til hovedmenuen");
+                Console.WriteLine("Velkommen til denne bilapp. Med denne applikation \nkan du indtaste info om din bil, simulere kørsel,\nberegne brændstofpris, og meget mere");
+                Console.WriteLine("");
+                Console.WriteLine("tryk på en vilkårlig tast for at forsætte...");
 
             }
 
@@ -99,7 +100,7 @@ namespace hest
 
 
 
-            static void Køretur(ref int Kilometerstand)
+            static void Køretur(ref int Kilometerstand, ref double afstand)
             {
                 Console.WriteLine("===========================================");
                 Console.WriteLine("============== KØRESIMULATER ==============");
@@ -115,9 +116,9 @@ namespace hest
                     if (Motorsvar == "ja")
                     {
                         Console.WriteLine("Hvor Langt er der til din distination? (km)");
-                        int afstand = Convert.ToInt32 (Console.ReadLine());
+                        afstand = Convert.ToDouble (Console.ReadLine());
 
-                        int Nyafstand = afstand + Kilometerstand;
+                        double Nyafstand = afstand + Kilometerstand;
 
                         Console.WriteLine($"Dit Kilometertæller vil nu stå på {Nyafstand}, jeg håber det var en god tur!");
                         Console.WriteLine("");
@@ -131,12 +132,8 @@ namespace hest
 
             static void KøreturBeregn(ref string Brændstof, ref double afstand, ref string BrændstofBogstav, ref double Kml, ref double antalLiterBrændstof, ref double d, ref double b)
             {
-                if (Kml > 0 && afstand > 0) 
-                {
+                
                     antalLiterBrændstof = (afstand / Kml);
-
-
-                }
 
                 if (BrændstofBogstav == "d" || BrændstofBogstav == "b")
                 {
@@ -146,16 +143,17 @@ namespace hest
                         Console.WriteLine("");
                         Console.WriteLine("");
                         Console.WriteLine("============== RESULTAT ==============");
-                        Console.WriteLine($" Din bil kommer til at bruge {antalLiterBrændstof} Diesel. Prisen ville være {antalLiterBrændstof * b }");
+                        Console.WriteLine($" Din bil kommer til at bruge {antalLiterBrændstof} liter Benzin. Prisen ville være {antalLiterBrændstof * b }");
+                        Console.ReadKey();
                     }
 
-                    else if (BrændstofBogstav == "b")
+                    else if (BrændstofBogstav == "d")
                     {
                         Console.WriteLine("");
                         Console.WriteLine("");
                         Console.WriteLine("============== RESULTAT ==============");
-                        Console.WriteLine($" Din bil kommer til at bruge {antalLiterBrændstof} Diesel. Prisen ville være {antalLiterBrændstof * d }");
-
+                        Console.WriteLine($" Din bil kommer til at bruge {antalLiterBrændstof} Liter Diesel. Prisen ville være {antalLiterBrændstof * d }");
+                        Console.ReadKey();
                     }
 
 
@@ -173,7 +171,7 @@ namespace hest
 
             }
 
-            static void Print(ref string Brand, ref string Model, ref int Year, ref int Kilometerstand, ref double Kml, ref string Geartype, ref string Brændstof, ref bool BilInfoIndtastet, ref string BrændstofBogstav)
+            static void Print(ref string Brand, ref string Model, ref int Year, ref int Kilometerstand, ref double Kml, ref string Geartype, ref string Brændstof, ref bool BilInfoIndtastet, ref string BrændstofBogstav, ref double afstand)
             {
 
                 // det her er kun til den øveste del af tabellen
@@ -208,7 +206,7 @@ namespace hest
                 Console.WriteLine("=============================================================================================================================================================================");
                 Console.WriteLine($"|{BrandTabel2}|{m}|{ModelTabel2}|{m}|{årTabel2}|{m}|{GearTabel2.ToUpper()}|{m}|{BrændstofTabel2.ToUpper()}|{m}|{kmlTabel2}|{m}|{kilometerstandTabel2}|{m}|");
                 Console.WriteLine("");
-                Console.WriteLine("");
+                Console.WriteLine($"{afstand}");
                 Console.WriteLine("Tryk enter for at vende tilbage til hovedmenuen");
             }
 
