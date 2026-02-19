@@ -232,6 +232,8 @@ namespace MenuTutorial
 
             Console.WriteLine("nej tak <3");
 
+            Console.ReadLine();
+
 
         }
         static void PrintCarDetails()
@@ -262,6 +264,8 @@ namespace MenuTutorial
         static void PrintAllTeamCars()
         {
             Console.WriteLine("Jeg ikke forstaa");
+
+            Console.ReadLine();
 
 
         }
