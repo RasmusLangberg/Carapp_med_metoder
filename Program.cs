@@ -23,27 +23,28 @@ namespace hest
             bool BilInfoIndtastet = false;
 
             Indtroduktion();
-
+            Console.ReadKey();
+            Console.Clear();
             while (programmetKører)
             {
-                BilInfoIndtastet = false;
                 Console.WriteLine("=======================================");
                 Console.WriteLine("============== HOVEDMENU ==============");
                 Console.WriteLine("=======================================");
                 Console.WriteLine(" 1) Indtast Bil information ");
-                Console.WriteLine(" 2) Køre simulator ");
-                Console.WriteLine(" 3) Køretur simulator");
-                Console.WriteLine(" 4) Køreturs berenger");
+                Console.WriteLine(" 2) Kører simulator ");
+                Console.WriteLine(" 3) Brændstof berenger");
+                Console.WriteLine(" 4) ");
                 Console.WriteLine(" 5) Er kilometertallet på bilen en palidrome? f.eks 112211");
                 Console.WriteLine(" 6) Print bil detailer");
                 Console.WriteLine(" 7) Afslut program");
 
                 string BrugerInput = Console.ReadLine();
+                Console.Clear();
 
                 switch (BrugerInput)
                 {
                     case "1":
-                        bilinfo(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof);
+                        bilinfo(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof, ref BilInfoIndtastet);
                         break;
 
                     case "2":
@@ -52,9 +53,11 @@ namespace hest
                             Console.WriteLine("du skal Indtaste bil information før du kan bruge køre simulatoren");
                             BilInfoIndtastet = true;
                         }
-                        else if (BilInfoIndtastet = false) ;
-                
+                        else
+                        {
                             Køretur(ref Kilometerstand);
+                        } 
+                               
                         break;
 
                     case "3":
@@ -88,34 +91,38 @@ namespace hest
 
             }
 
+
+
+
+
             static void Køretur(ref int Kilometerstand)
             {
-                
+                Console.WriteLine("===========================================");
+                Console.WriteLine("============== KØRESIMULATER ==============");
+                Console.WriteLine("===========================================");
                 bool ManglerSvarMotor = false;
                 while (ManglerSvarMotor == false)
                 {
 
                   Console.WriteLine("Er din motor tændt?  (JA/NEJ)  ");
 
-                    string Motorsvar = Console.ReadLine();
+                    string Motorsvar = Console.ReadLine().ToLower();
 
                     if (Motorsvar == "ja")
                     {
-                        Console.WriteLine("Hvor mange kilometer køre du?");
+                        Console.WriteLine("Hvor Langt er der til din distination? (km)");
                         int afstand = Convert.ToInt32 (Console.ReadLine());
 
                         int Nyafstand = afstand + Kilometerstand;
 
+                        Console.WriteLine($"Dit Kilometertæller vil nu stå på {Nyafstand}, jeg håber det var en god tur!");
+                        Console.WriteLine("");
+                        Console.WriteLine("Tyrk på en vilkårlig tast for at komme tilbage til menuen");
+                        Console.ReadKey();
 
+                        ManglerSvarMotor = true;
                     }
-
-
-
                 }
-                
-
-            
-            
             }
         
 
@@ -139,8 +146,14 @@ namespace hest
 
             // ref kalder på de variable defineret unde i main -- ref går begge veje så variabler opdatere også ude i main 
 
-            static void bilinfo(ref string Brand, ref string Model, ref int Year, ref int Kilometerstand, ref double Kml, ref string Geartype, ref string Brændstof)
+            static void bilinfo(ref string Brand, ref string Model, ref int Year, ref int Kilometerstand, ref double Kml, ref string Geartype, ref string Brændstof, ref bool BilInfoIndtastet)
             {
+
+                Console.WriteLine("==========================================");
+                Console.WriteLine("============== BILINFO ==================");
+                Console.WriteLine("==========================================");
+
+
 
                 Console.WriteLine(" ");
                 Console.Write("  Indtast dit bilmærke:");
@@ -167,7 +180,7 @@ namespace hest
                 Console.Write("  Indtast brændstof type (Benzin/Diesel):");
                 Brændstof = (Console.ReadLine().ToLower());
 
-                
+                BilInfoIndtastet = true;
             }
 
 
