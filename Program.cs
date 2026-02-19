@@ -1,4 +1,6 @@
-﻿namespace hest
+﻿using System.Reflection;
+
+namespace hest
 {
     internal class Program
     {
@@ -59,11 +61,11 @@
                     Console.WriteLine("tryk ENTER for at at vende tilbage til hovedmenuen");
                 }
 
-                static void Køretur()
+                static void Køretur(string brand,string model, int year, string gearType, string brændstof,double kml, int Kilometerstand)
                 {
-                    
 
 
+                    Console.Write("hello");
 
                 }
 
@@ -103,44 +105,43 @@
                     Environment.Exit(0);
                 }
 
+
+
+
+
+
+
+
+
+
                 static void BilInfo()
                 {
                     
                     bool ManglerInputÅr = true;
                     bool ManglerInputKML = true;
-                    int Year = 0;
+                  
 
                     Console.WriteLine(" ");
                     Console.Write("  Indtast dit bilmærke:");
-                    string brand = Console.ReadLine();
+                    string Brand = Console.ReadLine();
 
                     Console.Write("  Indtast din bilmodel:");
-                    string model = Console.ReadLine();
-
-                    while (ManglerInputÅr == true)
-                    {
-                        try
-                        {
-                            Console.Write("  Indtast bilens årgang (YYYY):");
-                            int year = Convert.ToInt32(Console.ReadLine());
-                            ManglerInputÅr = false;
-                        }
-                        catch 
-                        {
-                            Console.WriteLine("Ugyldigt input! Indtast venligst et tal (YYYY)");
-                        }
-                    }
+                    string Model = Console.ReadLine();
+                        
+                    Console.Write("  Indtast bilens årgang (YYYY):");
+                    int Year = Convert.ToInt32(Console.ReadLine());
+                         
 
                     Console.Write("  Indtast bilens geartype (Manuel/Automatisk):");
-                    string gearType = Console.ReadLine();
+                    string Geartype = Console.ReadLine();
 
                     // Oprindligt char men skiftet til string fordi det ikke var nogen grund - skal bruge det fulde navn i tabellen
                     Console.Write("  Indtast brændstof type (Benzin/Diesel):");
-                    string brændstof = (Console.ReadLine().ToLower());
+                    string Brændstof = (Console.ReadLine().ToLower());
 
                     
                     Console.Write("  Indtast brændstofforbrug i km/l (XX,X):");
-                    double kml = (Convert.ToDouble(Console.ReadLine()));
+                    double Kml = (Convert.ToDouble(Console.ReadLine()));
 
                     Console.Write("  Indtast hvor langt bilen har kørt:");
                     int Kilometerstand = Convert.ToInt32(Console.ReadLine());
@@ -157,7 +158,7 @@
                     Console.WriteLine("============== INDTASTET DATA ==============");
                     Console.WriteLine($"  Bilmærke: {brand.ToUpper()}");
                     Console.WriteLine($"  Bilmodel: {model.ToUpper()}");
-                    Console.WriteLine($"  Årgang: {Year}");
+                    Console.WriteLine($"  Årgang: {year}");
                     Console.WriteLine($"  Geartype: {gearType.ToUpper()}");
                     Console.WriteLine($"  Brændstof: {brændstof.ToUpper()}");
                     Console.WriteLine($"  Km/l: {kml}");
