@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace hest
 {
@@ -12,8 +13,14 @@ namespace hest
 
             bool programmetKører = true;
 
-           
-             
+            string Brand;
+            string Model;
+            int Year;
+            int Kilometerstand;
+            double Kml;
+            string Geartype;
+            string Brændstof;
+
 
             while (programmetKører)
             {
@@ -38,8 +45,7 @@ namespace hest
 
                     case "2":
 
-                        bilinfoSTRING();
-
+                        bilinfo();
                         break;
 
                     case "3":
@@ -53,7 +59,7 @@ namespace hest
                         AfslutProgram();
                         break;
                     case "6":
-                        AfslutProgram();
+                        BilTabel();
                         break;
                 }
 
@@ -66,6 +72,7 @@ namespace hest
                     Console.WriteLine("Velkommen til denne bilapp. \nmed bilappen kan du indtaste data fra kundens bil");
                     Console.WriteLine("");
                     Console.WriteLine("tryk ENTER for at at vende tilbage til hovedmenuen");
+                    
                 }
 
                
@@ -86,7 +93,7 @@ namespace hest
 
 
 
-                static (string,string,string,string) bilinfoSTRING()
+                static void bilinfo()
                 {
 
                     Console.WriteLine(" ");
@@ -96,7 +103,16 @@ namespace hest
 
                     Console.Write("  Indtast din bilmodel:");
                     string Model = Console.ReadLine();
-                        
+
+                    Console.Write("  Indtast bilens årgang (YYYY):");
+                    int Year = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("  Indtast hvor langt bilen har kørt:");
+                    int Kilometerstand = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("  Indtast brændstofforbrug i km/l (XX,X):");
+                    double kml = (Convert.ToDouble(Console.ReadLine()));
+
 
                     Console.Write("  Indtast bilens geartype (Manuel/Automatisk):");
                     string Geartype = Console.ReadLine();
@@ -105,34 +121,21 @@ namespace hest
                     Console.Write("  Indtast brændstof type (Benzin/Diesel):");
                     string Brændstof = (Console.ReadLine().ToLower());
 
-                    return (Brand, Model, Geartype, Brændstof);
-
-
+                    
 
                 }
-                static (int,int) bilinfoINT()
+              
+                
+
+
+                static void BilTabel(string Brand)
                 {
-                    Console.Write("  Indtast bilens årgang (YYYY):");
-                    int Year = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine($"{Brand}");
 
-                    Console.Write("  Indtast hvor langt bilen har kørt:");
-                    int Kilometerstand = Convert.ToInt32(Console.ReadLine());
 
-                    return (Year, Kilometerstand);
+
+
                 }
-                static double bilinfoDOUBLE()
-                {
-                    Console.Write("  Indtast bilens årgang (YYYY):");
-                    int Year = Convert.ToInt32(Console.ReadLine());
-
-                    Console.Write("  Indtast hvor langt bilen har kørt:");
-                    int Kilometerstand = Convert.ToInt32(Console.ReadLine());
-
-                    return (Year, Kilometerstand);
-                }
-
-
-
 
 
 
@@ -202,16 +205,11 @@ namespace hest
 
 
 
-                       
-            }
-
-
-
-         }
-
-
                 
-            
+                
+
+            }
+         }  
         
     }
 }
