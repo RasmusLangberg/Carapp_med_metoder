@@ -1,5 +1,5 @@
 ﻿namespace hest
-// Kats version
+// Kats version_2
 {
     internal class Program
     {
