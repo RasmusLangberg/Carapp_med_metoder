@@ -58,13 +58,38 @@
                     Console.WriteLine("");
                     Console.WriteLine("tryk ENTER for at at vende tilbage til hovedmenuen");
                 }
+
                 static void Køretur()
                 {
-                    BilInfo();
+                    
 
 
 
                 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 static void KøreturBeregn()
                 {
                     Console.WriteLine("Tryk enter for at lukke programmet");
@@ -267,7 +292,7 @@
                         Console.WriteLine("Tryk enter for at vende tilbage til hovedmenuen");
 
 
-
+                        Køretur(brand,model,Year,gearType,brændstof,kml,Kilometerstand);
 
                     }
 
