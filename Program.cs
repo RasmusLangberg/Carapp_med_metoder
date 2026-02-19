@@ -133,6 +133,8 @@ namespace MenuTutorial
 
             Console.WriteLine(udskrivBilData);
 
+            Console.WriteLine("_______________________________");
+
             Console.ReadLine();
 
 
@@ -158,8 +160,6 @@ namespace MenuTutorial
                 {
                     isEngineOn = true;
 
-
-
                 }
                
             }
@@ -178,6 +178,10 @@ namespace MenuTutorial
 
             Console.WriteLine();
             Console.WriteLine();
+
+            Console.WriteLine("_______________________________");
+
+            Console.ReadLine();
 
 
         }
@@ -204,7 +208,7 @@ namespace MenuTutorial
 
 
             Console.WriteLine($"Du har forhen skrevet at du vil tage en tur der er {distance} km lang og at du bruger {brændstof}");
-
+            Console.ReadLine();
 
             double fuelneeded = distance / kmL;
             double pris = fuelneeded * fuelPrice;
@@ -212,6 +216,9 @@ namespace MenuTutorial
 
             Console.WriteLine($"Du bruger derfor {fuelneeded} brandstof til at komme derhend og prisen vil vaere {pris} kr");
             Console.WriteLine($"Bilmærke: {brand}");
+
+
+            Console.WriteLine("_______________________________");
 
             Console.ReadLine();
 
