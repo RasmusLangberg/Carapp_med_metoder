@@ -60,9 +60,10 @@
                 }
                 static void Køretur()
                 {
-                    
-                    
-                    
+                    BilInfo();
+
+
+
                 }
                 static void KøreturBeregn()
                 {
@@ -111,11 +112,6 @@
                     // Oprindligt char men skiftet til string fordi det ikke var nogen grund - skal bruge det fulde navn i tabellen
                     Console.Write("  Indtast brændstof type (Benzin/Diesel):");
                     string brændstof = (Console.ReadLine().ToLower());
-
-                    
-                    
-                        Console.Write("  Indtast brændstofforbrug i km/l (XX,X):");
-                        double kml = (Convert.ToDouble(Console.ReadLine()));
 
                     
                     Console.Write("  Indtast brændstofforbrug i km/l (XX,X):");
