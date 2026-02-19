@@ -47,7 +47,7 @@ namespace hest
                 {
                     case "1":
 
-                        bilinfo(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof, ref BilInfoIndtastet);
+                        bilinfo(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof, ref BilInfoIndtastet, ref BrændstofBogstav);
                         break;
 
                     case "2":
@@ -71,7 +71,7 @@ namespace hest
                         break;
 
                     case "4":
-                        KøreturBeregn(ref Brændstof, ref afstand);
+                        KøreturBeregn(ref Brændstof, ref afstand, ref BrændstofBogstav, ref Kml);
                         break;
                     case "5":
                         AfslutProgram();
@@ -129,8 +129,15 @@ namespace hest
                 }
             }
 
-            static void KøreturBeregn(ref string Brændstof, ref int afstand, ref string BrændstofBogstav)
+            static void KøreturBeregn(ref string Brændstof, ref int afstand, ref string BrændstofBogstav, ref double Kml)
             {
+                double antalLiterBrændstof = afstand / Kml;
+
+                double d = 12.29; // benzin pris
+
+                double b = 13.49; // diesel pris
+
+
                 if (afstand >= 0 && BrændstofBogstav == "d" || BrændstofBogstav == "b")
                 {
 
@@ -139,8 +146,8 @@ namespace hest
                         Console.WriteLine("");
                         Console.WriteLine("");
                         Console.WriteLine("============== RESULTAT ==============");
-                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter benzin. Det kommer til at koste: {1:F2}\n   Den oprindlige kilometertal var {2}, og det nye kilometertal er nu {3}"
-                            , antalLiterBrændstof, antalLiterBrændstof * b, Kilometerstand, NyKilometerTal);
+                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter benzin. Det kommer til at koste: {1:F2}"
+                            , antalLiterBrændstof, antalLiterBrændstof * b);
                         Console.WriteLine(formattest1);
                         Console.WriteLine("");
                         Console.WriteLine("");
@@ -151,8 +158,8 @@ namespace hest
                         Console.WriteLine("");
                         Console.WriteLine("");
                         Console.WriteLine("============== RESULTAT ==============");
-                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter diesel. Det kommer til at koste: {1:F2}\n   Den oprindlige kilometertal var {2}, og det nye kilometertal er nu {3}"
-                            , antalLiterBrændstof, antalLiterBrændstof * d, Kilometerstand, NyKilometerTal);
+                        string formattest1 = String.Format("  Din bil kommer til at bruge {0:F2} liter diesel. Det kommer til at koste: {1:F2}"   
+                            , antalLiterBrændstof, antalLiterBrændstof * d);
                         Console.WriteLine(formattest1);
                         Console.WriteLine("");
                         Console.WriteLine("");
