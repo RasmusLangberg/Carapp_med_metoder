@@ -53,9 +53,6 @@
 
                 static void Bilapp()
                 {
-
-
-
                     Console.WriteLine(" ");
                     Console.Write("  Indtast dit bilmærke:");
                     string brand = Console.ReadLine();
@@ -250,10 +247,10 @@
 
 
                 }
-
+                Hej 
 
                 Console.ReadLine();
             }
         }
-    }
-}
+    
+
