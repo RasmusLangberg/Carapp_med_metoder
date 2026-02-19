@@ -23,6 +23,9 @@ namespace hest
             bool BilInfoIndtastet = false;
             double afstand = 0;
             string BrændstofBogstav = "";
+            double antalLiterBrændstof = 0;
+            double d = 12.29;
+            double b = 13.49;
 
             Indtroduktion();
             Console.ReadKey();
@@ -36,9 +39,8 @@ namespace hest
                 Console.WriteLine(" 2) Kører simulator ");
                 Console.WriteLine(" 3) Brændstof berenger");
                 Console.WriteLine(" 4) Er kilometertallet på bilen en palidrome? f.eks 112211");
-                Console.WriteLine(" 5) ");
-                Console.WriteLine(" 6) Print bil detailer");
-                Console.WriteLine(" 7) Afslut program");
+                Console.WriteLine(" 5) Print bil detailer");
+                Console.WriteLine(" 6) Afslut program");
 
                 string BrugerInput = Console.ReadLine();
                 Console.Clear();
@@ -65,14 +67,14 @@ namespace hest
                         break;
 
                     case "3":
-                        KøreturBeregn(ref Brændstof, ref afstand, ref BrændstofBogstav, ref Kml);
+                        KøreturBeregn(ref Brændstof, ref afstand, ref BrændstofBogstav, ref Kml, ref antalLiterBrændstof, ref d, ref b);
                         break;
 
                     case "4":
                        
                         break;
                     case "5":
-                        AfslutProgram();
+                        Print(ref Brand, ref Model, ref Year, ref Kilometerstand, ref Kml, ref Geartype, ref Brændstof, ref BilInfoIndtastet, ref BrændstofBogstav);
                         break;
                     case "6":
 
@@ -127,16 +129,16 @@ namespace hest
                 }
             }
 
-            static void KøreturBeregn(ref string Brændstof, ref double afstand, ref string BrændstofBogstav, ref double Kml)
+            static void KøreturBeregn(ref string Brændstof, ref double afstand, ref string BrændstofBogstav, ref double Kml, ref double antalLiterBrændstof, ref double d, ref double b)
             {
-                double antalLiterBrændstof = afstand / Kml;
-
-                double d = 12.29; // benzin pris
-
-                double b = 13.49; // diesel pris
+                if (Kml > 0 && afstand > 0) 
+                {
+                    antalLiterBrændstof = (afstand / Kml);
 
 
-                if (afstand >= 0 && (BrændstofBogstav == "d" || BrændstofBogstav == "b") )
+                }
+
+                if (BrændstofBogstav == "d" || BrændstofBogstav == "b")
                 {
 
                     if (BrændstofBogstav == "b")
@@ -147,7 +149,7 @@ namespace hest
                         Console.WriteLine($" Din bil kommer til at bruge {antalLiterBrændstof} Diesel. Prisen ville være {antalLiterBrændstof * b }");
                     }
 
-                    else
+                    else if (BrændstofBogstav == "b")
                     {
                         Console.WriteLine("");
                         Console.WriteLine("");
@@ -171,7 +173,44 @@ namespace hest
 
             }
 
+            static void Print(ref string Brand, ref string Model, ref int Year, ref int Kilometerstand, ref double Kml, ref string Geartype, ref string Brændstof, ref bool BilInfoIndtastet, ref string BrændstofBogstav)
+            {
 
+                // det her er kun til den øveste del af tabellen
+
+                string BrandTabel1 = "BilMærke".PadLeft(18).PadRight(18);
+                string ModelTabel1 = "Bilmodel".PadLeft(18).PadRight(18);
+                string årTabel1 = "Årgang".PadLeft(18).PadRight(18);
+                string GearTabel1 = "Geartype".PadLeft(18).PadRight(18);
+                string BrændstofTabel1 = "Brændstof-type".ToString().PadLeft(18).PadRight(18);
+                string kmlTabel1 = "km/l".PadLeft(18).PadRight(18);
+                string kilometerstandTabel1 = "Kilometertal før".PadLeft(18).PadRight(18);
+                string NyeKilometertalTabel1 = "Kilometertal efter".PadLeft(18).PadRight(18);
+
+
+                // nu skal jeg så lave den nederste del af tabellen
+
+                string BrandTabel2 = Brand.PadLeft(18).PadRight(18);
+                string ModelTabel2 = Model.PadLeft(18).PadRight(18);
+                string årTabel2 = Year.ToString("F0").PadLeft(18).PadRight(18);
+                string GearTabel2 = Geartype.ToString().PadLeft(18).PadRight(18);
+                string BrændstofTabel2 = Brændstof.ToString().PadLeft(18).PadRight(18);
+                string kmlTabel2 = Kml.ToString("F1").PadLeft(18).PadRight(18);
+                string kilometerstandTabel2 = Kilometerstand.ToString("F0").PadLeft(18).PadRight(18);
+                
+
+
+
+                // mellemrum til tilpasning
+                string m = "".PadLeft(2).PadRight(2);
+
+                Console.WriteLine($"|{BrandTabel1}|{m}|{ModelTabel1}|{m}|{årTabel1}|{m}|{GearTabel1}|{m}|{BrændstofTabel1}|{m}|{kmlTabel1}|{m}|{kilometerstandTabel1}|{m}|");
+                Console.WriteLine("=============================================================================================================================================================================");
+                Console.WriteLine($"|{BrandTabel2}|{m}|{ModelTabel2}|{m}|{årTabel2}|{m}|{GearTabel2.ToUpper()}|{m}|{BrændstofTabel2.ToUpper()}|{m}|{kmlTabel2}|{m}|{kilometerstandTabel2}|{m}|");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("Tryk enter for at vende tilbage til hovedmenuen");
+            }
 
 
 
@@ -221,6 +260,9 @@ namespace hest
                 Console.Write("  Indtast brændstof type (Benzin/Diesel):");
                 Brændstof = (Console.ReadLine().ToLower());
                 BrændstofBogstav = Brændstof[0].ToString();
+                
+
+
 
                 BilInfoIndtastet = true;
             }
