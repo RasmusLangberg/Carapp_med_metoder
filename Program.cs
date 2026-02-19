@@ -106,9 +106,27 @@ namespace MenuTutorial
         }
         static void Drive()
         {
-            isEngineOn = false;
+            bool isEngineOn = false;
+            while (isEngineOn == false) 
+            {
+                Console.WriteLine("Er din bil tændt?");
+                string engineStatus = Console.ReadLine().ToLower();
 
-            Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
+                if (engineStatus == "ja")
+                {
+                    isEngineOn = true;
+
+                }
+               
+
+
+            } 
+            
+
+           
+
+
+                Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
             char brændstof = Console.ReadLine()[0];
 
 
