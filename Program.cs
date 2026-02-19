@@ -14,7 +14,7 @@ namespace MenuTutorial
             {
                 Console.WriteLine("\n--- HOVEDMENU ---");
                 Console.WriteLine("1) Introduktion");
-                Console.WriteLine("2) Lav en beregning");
+                Console.WriteLine("2) aaben carapp beregninger");
                 Console.WriteLine("3) Afslut");
                 Console.Write("\nVælg en mulighed: ");
 
@@ -26,7 +26,7 @@ namespace MenuTutorial
                         ShowIntro();
                         break;
                     case "2":
-                        PerformCalculation();
+                        CarApp();
                         break;
                     case "3":
                         isRunning = false;
@@ -56,22 +56,13 @@ namespace MenuTutorial
             Console.WriteLine("\nDette program lærer dig at bruge switch-statements og loops i C#.");
         }
 
-        static void PerformCalculation()
+        static void CarApp()
         {
-            try
-            {
-                Console.Write("Indtast tal A: ");
-                double numberA = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Indtast tal B: ");
-                double numberB = Convert.ToDouble(Console.ReadLine());
+           
 
-                double result = numberA + numberB;
-                Console.WriteLine($"Resultatet af {numberA} + {numberB} er: {result}");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Fejl: Indtast venligst et gyldigt tal.");
-            }
+
+
+
         }
     }
 }
