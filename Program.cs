@@ -101,10 +101,18 @@ namespace MenuTutorial
 
             string udskrivBilData = String.Format("Din bil er en {0} i modellen {1} fra årgang {2} der bruger geartype {3}. Din bil bruger {4} og har kørt {5} km. Din bil kan køre {6}km pr l.", brand, model, year, gearType, brændstof, kmt, kmL);
 
-        }
-        static void Drive(double distance)
-        {
+            return;
 
+        }
+        static void Drive()
+        {
+            isEngineOn = false;
+
+            Console.WriteLine("Indtast om det er benzin(b) eller diesel(d)");
+            char brændstof = Console.ReadLine()[0];
+
+
+            Console.WriteLine("er din bil tændt?");
 
 
         }
